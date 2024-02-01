@@ -572,8 +572,8 @@ if __name__ == "__main__":
                 cur_question_pairs = []
                 sampled_question_pairs = get_sampled_pairs(sub_question_type='level', level_question_types=['positive', 'negative_hard', 'negative_easy'], toroot_question_types=None, question_pool_name = question_pool_name)
                 cur_question_pairs.append(sampled_question_pairs)
-                sampled_question_pairs = get_sampled_pairs(sub_question_type='toroot', level_question_types=None, toroot_question_types=['positive_to_root', 'negative_to_root'], question_pool_name = question_pool_name)
-                cur_question_pairs.append(sampled_question_pairs)
+                #sampled_question_pairs = get_sampled_pairs(sub_question_type='toroot', level_question_types=None, toroot_question_types=['positive_to_root', 'negative_to_root'], question_pool_name = question_pool_name)
+                #cur_question_pairs.append(sampled_question_pairs)
                 for cur_question_pair in cur_question_pairs:
                     compose_questions_get_response_ctd(cur_question_pair, taxonomy_type=question_pool_name, generator=generator, ckpt_dir = cur_model_dir, exp_type=exp_type) # GPU29
         else:
@@ -581,8 +581,8 @@ if __name__ == "__main__":
                 cur_question_pairs = []
                 sampled_question_pairs, sampled_few_shot = get_sampled_pairs(sub_question_type='level', level_question_types=['positive', 'negative_hard', 'negative_easy'], toroot_question_types=None, question_pool_name = question_pool_name, exp_type=exp_type)
                 cur_question_pairs.append((sampled_question_pairs, sampled_few_shot))
-                sampled_question_pairs, sampled_few_shot = get_sampled_pairs(sub_question_type='toroot', level_question_types=None, toroot_question_types=['positive_to_root', 'negative_to_root'], question_pool_name = question_pool_name, exp_type=exp_type)
-                cur_question_pairs.append((sampled_question_pairs, sampled_few_shot))
+                #sampled_question_pairs, sampled_few_shot = get_sampled_pairs(sub_question_type='toroot', level_question_types=None, toroot_question_types=['positive_to_root', 'negative_to_root'], question_pool_name = question_pool_name, exp_type=exp_type)
+                #cur_question_pairs.append((sampled_question_pairs, sampled_few_shot))
                 for cur_question_pair, cur_few_shot in cur_question_pairs:
                     compose_questions_get_response_ctd((cur_question_pair, cur_few_shot), taxonomy_type=question_pool_name, generator=generator, ckpt_dir = cur_model_dir, exp_type=exp_type) # GPU29
 
