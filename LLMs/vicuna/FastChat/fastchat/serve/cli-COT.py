@@ -362,8 +362,8 @@ def main(args):
                 cur_question_pairs = []
                 sampled_question_pairs = get_sampled_pairs(sub_question_type='level', level_question_types=['positive', 'negative_hard', 'negative_easy'], toroot_question_types=None, question_pool_name = cur_taxonomy)
                 cur_question_pairs.append(sampled_question_pairs)
-                sampled_question_pairs = get_sampled_pairs(sub_question_type='toroot', level_question_types=None, toroot_question_types=['positive_to_root', 'negative_to_root'], question_pool_name = cur_taxonomy)
-                cur_question_pairs.append(sampled_question_pairs)
+                #sampled_question_pairs = get_sampled_pairs(sub_question_type='toroot', level_question_types=None, toroot_question_types=['positive_to_root', 'negative_to_root'], question_pool_name = cur_taxonomy)
+                #cur_question_pairs.append(sampled_question_pairs)
                 for cur_sampled_question_pairs in cur_question_pairs:
                     inps_dict = get_question_pool(cur_sampled_question_pairs, cur_taxonomy)
                 
