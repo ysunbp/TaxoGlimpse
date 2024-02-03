@@ -83,7 +83,7 @@ tokenizer_40b = AutoTokenizer.from_pretrained(model_40b)
 ```
 ### 3.5. GPTs
 Use the following Python code to deploy the LLMs:
-#### GPT-3.5
+#### Azure API
 ```python
 import openai
 openai.api_type = "azure"
@@ -100,7 +100,7 @@ def generateResponse(prompt, gpt_name):
     return response['choices'][0]['message']['content']
 generateResponse("example", "gpt-35-turbo")
 ```
-#### GPT-4
+#### OpenAI API
 ```python
 import openai
 openai.api_base = ''
@@ -218,4 +218,25 @@ $ python falcon_chat_taxonomy_instance.py >> ../logs/falcon-40b/zero_shot_instan
 $ python falcon_chat_taxonomy_instance_full.py >> ../logs/falcon-40b/zero_shot_instance_full.txt
 ``` 
 ### 5.5. GPTs
-We introduce the steps for GPT-3.5 and GPT-4 respectively, including the main experiments and the instance typing experiment.
+We introduce the steps for GPT-3.5 and GPT-4 respectively, including the main experiments and the instance typing experiment. <br>
+Please input your Azure APIs or OpenAI APIs at the beginning of the Python files.
+#### GPT 3.5
+```console
+$ conda activate LLM-probing
+$ cd TaxoGlimpse/LLMs/GPTs
+$ ### main experiments
+$ evaluate_taxonomy.py >> ../logs/gpt-3.5/main_exps.txt # zero shot
+$ ### instance typing experiments
+$ evaluate_taxonomy_instance.py >> ../logs/gpt-3.5/instance.txt
+$ evaluate_taxonomy_instance_full.py >> ../logs/gpt-3.5/instance_full.txt
+```
+#### GPT 4
+```console
+$ conda activate LLM-probing
+$ cd TaxoGlimpse/LLMs/GPTs
+$ ### main experiments
+$ evaluate_taxonomy_gpt4.py >> ../logs/gpt-4/main_exps.txt # zero shot
+$ ### instance typing experiments
+$ evaluate_taxonomy_gpt4_instance.py >> ../logs/gpt-4/instance.txt
+$ evaluate_taxonomy_gpt4_instance_full.py >> ../logs/gpt-4/instance_full.txt
+```
