@@ -60,11 +60,60 @@ The Glottolog taxonomy (Version 4.8) was obtained from the following [link](http
 We introduce how to deploy the LLMs used in our benchmark.
 
 ### 3.1. Llama-2s
+Please refer to steps 3 to 5 of the Quick Start in [README.md](https://github.com/ysunbp/TaxoGlimpse/blob/main/LLMs/llama/README.md) file to download the model weights (7B-chat, 13B-caht, and 70B-chat).
 ### 3.2. Vicunas
+Please refer to the Model Weights Section in [README.md](https://github.com/ysunbp/TaxoGlimpse/blob/main/LLMs/vicuna/FastChat/README.md) of Vicuna to download the weights for (lmsys/vicuna-7b-v1.5, lmsys/vicuna-13b-v1.5, and lmsys/vicuna-33b-v1.3).
 ### 3.3. Flan-t5s
+Use the following python code to deploy the LLMs:
+```
+from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
+model_3b = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-xl").cuda() # 3B
+tokenizer_3b = AutoTokenizer.from_pretrained("google/flan-t5-xl")
+model_11b = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-xxl").cuda() # 11B
+tokenizer_11b = AutoTokenizer.from_pretrained("google/flan-t5-xxl")
+```
 ### 3.4. Falcons
-### 3.5. GPTs
+```
+from transformers import AutoTokenizer, AutoModelForCausalLM
 
+model_7b = "tiiuae/falcon-7b-instruct" # 7B
+tokenizer_7b = AutoTokenizer.from_pretrained(model_7b)
+model_40b = "tiiuae/falcon-40b-instruct" # 40B
+tokenizer_40b = AutoTokenizer.from_pretrained(model_40b)
+```
+### 3.5. GPTs
+#### GPT-3.5
+```
+import openai
+openai.api_type = "azure"
+openai.api_base = 'xxx'
+openai.api_key = 'xxx'
+openai.api_version = "2023-05-15" # azure API
+def generateResponse(prompt, gpt_name):
+    messages = [{"role": "user","content": prompt}]
+    response = openai.ChatCompletion.create(
+        engine=gpt_name,
+        temperature=0,
+        messages=messages
+    )
+    return response['choices'][0]['message']['content']
+generateResponse("example", "gpt-35-turbo")
+```
+#### GPT-4
+```
+import openai
+openai.api_base = ''
+openai.api_key = ''
+def generateResponse(prompt, gpt_name):
+    messages = [{"role": "user","content": prompt}]
+    response = openai.ChatCompletion.create(
+        model=gpt_name,
+        temperature=0,
+        messages=messages
+    )
+    return response['choices'][0]['message']['content']
+generateResponse("example", "gpt-4-1106-preview")
+```
 ## 4. Question generation
 
 ## 5. Evaluation
