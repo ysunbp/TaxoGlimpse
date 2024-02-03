@@ -65,7 +65,7 @@ Please refer to steps 3 to 5 of the Quick Start in [README.md](https://github.co
 Please refer to the Model Weights Section in [README.md](https://github.com/ysunbp/TaxoGlimpse/blob/main/LLMs/vicuna/FastChat/README.md) of Vicuna to download the weights for (lmsys/vicuna-7b-v1.5, lmsys/vicuna-13b-v1.5, and lmsys/vicuna-33b-v1.3).
 ### 3.3. Flan-t5s
 Use the following python code to deploy the LLMs:
-```
+```python
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 model_3b = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-xl").cuda() # 3B
 tokenizer_3b = AutoTokenizer.from_pretrained("google/flan-t5-xl")
@@ -73,9 +73,8 @@ model_11b = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-xxl").cuda() #
 tokenizer_11b = AutoTokenizer.from_pretrained("google/flan-t5-xxl")
 ```
 ### 3.4. Falcons
-```
+```python
 from transformers import AutoTokenizer, AutoModelForCausalLM
-
 model_7b = "tiiuae/falcon-7b-instruct" # 7B
 tokenizer_7b = AutoTokenizer.from_pretrained(model_7b)
 model_40b = "tiiuae/falcon-40b-instruct" # 40B
@@ -83,7 +82,7 @@ tokenizer_40b = AutoTokenizer.from_pretrained(model_40b)
 ```
 ### 3.5. GPTs
 #### GPT-3.5
-```
+```python
 import openai
 openai.api_type = "azure"
 openai.api_base = 'xxx'
@@ -100,7 +99,7 @@ def generateResponse(prompt, gpt_name):
 generateResponse("example", "gpt-35-turbo")
 ```
 #### GPT-4
-```
+```python
 import openai
 openai.api_base = ''
 openai.api_key = ''
