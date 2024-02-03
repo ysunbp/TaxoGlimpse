@@ -192,4 +192,30 @@ $ python flan_chat_taxonomy_instance.py >> ../logs/flan-t5/zero_shot_instance.tx
 $ python flan_chat_taxonomy_instance_full.py >> ../logs/flan-t5/zero_shot_instance_full.txt
 ```
 ### 5.4. Falcons
+We introduce the steps for Falcon-7B and Falcon-40B respectively, including the main experiments and the instance typing experiment.
+#### Falcon-7B
+```console
+$ conda activate falcon
+$ cd TaxoGlimpse/LLMs/falcon/7B
+$ ### main experiments
+$ python falcon_chat_taxonomy.py >> ../logs/falcon-7b/zero_shot.txt # zero shot
+$ python falcon_chat_taxonomy_few_shot.py >> ../logs/falcon-7b/few_shot.txt # few shot
+$ python falcon_chat_taxonomy_COT.py >> ../logs/falcon-7b/COT.txt # COT
+$ ### instance typing experiments
+$ python falcon_chat_taxonomy_instance.py >> ../logs/falcon-7b/zero_shot_instance.txt 
+$ python falcon_chat_taxonomy_instance_full.py >> ../logs/falcon-7b/zero_shot_instance_full.txt
+```
+#### Falcon-40B
+```console
+$ conda activate falcon
+$ cd TaxoGlimpse/LLMs/falcon/40B
+$ ### main experiments
+$ python falcon_chat_taxonomy.py >> ../logs/falcon-40b/zero_shot.txt # zero shot
+$ python falcon_chat_taxonomy_few_shot.py >> ../logs/falcon-40b/few_shot.txt # few shot
+$ python falcon_chat_taxonomy_COT.py >> ../logs/falcon-40b/COT.txt # COT
+$ ### instance typing experiments
+$ python falcon_chat_taxonomy_instance.py >> ../logs/falcon-40b/zero_shot_instance.txt 
+$ python falcon_chat_taxonomy_instance_full.py >> ../logs/falcon-40b/zero_shot_instance_full.txt
+``` 
 ### 5.5. GPTs
+We introduce the steps for GPT-3.5 and GPT-4 respectively, including the main experiments and the instance typing experiment.
