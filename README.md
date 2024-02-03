@@ -241,3 +241,5 @@ $ ### instance typing experiments
 $ evaluate_taxonomy_gpt4_instance.py >> ../logs/gpt-4/instance.txt
 $ evaluate_taxonomy_gpt4_instance_full.py >> ../logs/gpt-4/instance_full.txt
 ```
+## 6. Brief results
+![results](https://github.com/ysunbp/TaxoGlimpse/blob/main/figures/result.png)
