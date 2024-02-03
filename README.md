@@ -123,18 +123,18 @@ To conduct the experiments, please follow these steps.
 We introduce the steps for Llama-7B, Llama-13B, and Llama-70B respectively, including the main experiments and the instance typing experiment.
 #### Llama-7B
 ```console
-cd TaxoGlimpse/LLMs/llama/
-torchrun --nproc_per_node 1 evaluate_llama_taxonomy.py >> ../logs/llama-2-7b-chat/log.txt
+$ cd TaxoGlimpse/LLMs/llama/
+$ torchrun --nproc_per_node 1 evaluate_llama_taxonomy.py >> ../logs/llama-2-7b-chat/log.txt
 ```
 #### Llama-13B
 ```console
-cd TaxoGlimpse/LLMs/llama/
-torchrun --nproc_per_node 2 evaluate_llama_taxonomy.py >> ../logs/llama-2-13b-chat/log.txt
+$ cd TaxoGlimpse/LLMs/llama/
+$ torchrun --nproc_per_node 2 evaluate_llama_taxonomy.py >> ../logs/llama-2-13b-chat/log.txt
 ```
 #### Llama-70B
 ```console
-cd TaxoGlimpse/LLMs/llama/
-torchrun --nproc_per_node 8 evaluate_llama_taxonomy.py >> ../logs/llama-2-70b-chat/log.txt
+$ cd TaxoGlimpse/LLMs/llama/
+$ torchrun --nproc_per_node 8 evaluate_llama_taxonomy.py >> ../logs/llama-2-70b-chat/log.txt
 ```
 ### 5.2. Vicunas
 ### 5.3. Flan-t5s
