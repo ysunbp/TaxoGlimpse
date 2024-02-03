@@ -64,7 +64,7 @@ Please refer to steps 3 to 5 of the Quick Start in [README.md](https://github.co
 ### 3.2. Vicunas
 Please refer to the Model Weights Section in [README.md](https://github.com/ysunbp/TaxoGlimpse/blob/main/LLMs/vicuna/FastChat/README.md) of Vicuna to download the weights for (lmsys/vicuna-7b-v1.5, lmsys/vicuna-13b-v1.5, and lmsys/vicuna-33b-v1.3).
 ### 3.3. Flan-t5s
-Use the following python code to deploy the LLMs:
+Use the following Python code to deploy the LLMs:
 ```python
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 model_3b = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-xl").cuda() # 3B
@@ -73,6 +73,7 @@ model_11b = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-xxl").cuda() #
 tokenizer_11b = AutoTokenizer.from_pretrained("google/flan-t5-xxl")
 ```
 ### 3.4. Falcons
+Use the following Python code to deploy the LLMs:
 ```python
 from transformers import AutoTokenizer, AutoModelForCausalLM
 model_7b = "tiiuae/falcon-7b-instruct" # 7B
@@ -81,6 +82,7 @@ model_40b = "tiiuae/falcon-40b-instruct" # 40B
 tokenizer_40b = AutoTokenizer.from_pretrained(model_40b)
 ```
 ### 3.5. GPTs
+Use the following Python code to deploy the LLMs:
 #### GPT-3.5
 ```python
 import openai
