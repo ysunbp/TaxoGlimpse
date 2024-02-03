@@ -114,10 +114,9 @@ def generateResponse(prompt, gpt_name):
 generateResponse("example", "gpt-4-1106-preview")
 ```
 ## 4. Question generation
-
+We provide the generated question pools in [TaxoGlimpse/question_pools/](./question_pools), you can download them directly. Alternatively, if you want to generate the question pools from scratch, please refer to the README page for each domain under the sub-folders in [TaxoGlimpse/LLM-taxonomy](./LLM-taxonomy).
 ## 5. Evaluation
-In order to conduct the experiments, please follow these steps.
-
+To conduct the experiments, please follow these steps.
 ### 5.1. LLama-2s
 ### 5.2. Vicunas
 ### 5.3. Flan-t5s
