@@ -123,20 +123,60 @@ To conduct the experiments, please follow these steps.
 We introduce the steps for Llama-7B, Llama-13B, and Llama-70B respectively, including the main experiments and the instance typing experiment.
 #### Llama-7B
 ```console
+$ conda activate llama
 $ cd TaxoGlimpse/LLMs/llama/
 $ torchrun --nproc_per_node 1 evaluate_llama_taxonomy.py >> ../logs/llama-2-7b-chat/log.txt
 ```
 #### Llama-13B
 ```console
+$ conda activate llama
 $ cd TaxoGlimpse/LLMs/llama/
 $ torchrun --nproc_per_node 2 evaluate_llama_taxonomy.py >> ../logs/llama-2-13b-chat/log.txt
 ```
 #### Llama-70B
 ```console
+$ conda activate llama
 $ cd TaxoGlimpse/LLMs/llama/
 $ torchrun --nproc_per_node 8 evaluate_llama_taxonomy.py >> ../logs/llama-2-70b-chat/log.txt
 ```
 ### 5.2. Vicunas
+We introduce the steps for Vicuna-7B, Vicuna-13B, and Vicuna-33B respectively, including the main experiments and the instance typing experiment.
+#### Vicuna-7B
+```console
+$ conda activate vicuna-self
+$ cd TaxoGlimpse/LLMs/vicuna/FastChat/
+$ ### main experiments
+$ python3 -m fastchat.serve.cli-zero-shot --model-path lmsys/vicuna-7b-v1.5 >> ../logs/vicuna-7b/zero_shot.txt # zero shot
+$ python3 -m fastchat.serve.cli-few-shot --model-path lmsys/vicuna-7b-v1.5 >> ../logs/vicuna-7b/few_shot.txt # few shot
+$ python3 -m fastchat.serve.cli-COT-shot --model-path lmsys/vicuna-7b-v1.5 >> ../logs/vicuna-7b/COT_shot.txt # COT
+$ ### instance typing experiments
+$ python3 -m fastchat.serve.cli-zero-shot-instance --model-path lmsys/vicuna-7b-v1.5 >> ../logs/vicuna-7b/zero_shot_instance.txt 
+$ python3 -m fastchat.serve.cli-zero-shot-instance-full --model-path lmsys/vicuna-7b-v1.5 >> ../logs/vicuna-7b/zero_shot_instance_full.txt
+```
+#### Vicuna-13B
+```console
+$ conda activate vicuna-self
+$ cd TaxoGlimpse/LLMs/vicuna/FastChat/
+$ ### main experiments
+$ python3 -m fastchat.serve.cli-zero-shot --model-path lmsys/vicuna-13b-v1.5 >> ../logs/vicuna-13b/zero_shot.txt # zero shot
+$ python3 -m fastchat.serve.cli-few-shot --model-path lmsys/vicuna-13b-v1.5 >> ../logs/vicuna-13b/few_shot.txt # few shot
+$ python3 -m fastchat.serve.cli-COT-shot --model-path lmsys/vicuna-13b-v1.5 >> ../logs/vicuna-13b/COT_shot.txt # COT
+$ ### instance typing experiments
+$ python3 -m fastchat.serve.cli-zero-shot-instance --model-path lmsys/vicuna-13b-v1.5 >> ../logs/vicuna-13b/zero_shot_instance.txt 
+$ python3 -m fastchat.serve.cli-zero-shot-instance-full --model-path lmsys/vicuna-13b-v1.5 >> ../logs/vicuna-13b/zero_shot_instance_full.txt
+```
+#### Vicuna-33B
+```console
+$ conda activate vicuna-self
+$ cd TaxoGlimpse/LLMs/vicuna/FastChat/
+$ ### main experiments
+$ python3 -m fastchat.serve.cli-zero-shot --model-path lmsys/vicuna-33b-v1.3 >> ../logs/vicuna-33b/zero_shot.txt # zero shot
+$ python3 -m fastchat.serve.cli-few-shot --model-path lmsys/vicuna-33b-v1.3 >> ../logs/vicuna-33b/few_shot.txt # few shot
+$ python3 -m fastchat.serve.cli-COT-shot --model-path lmsys/vicuna-33b-v1.3 >> ../logs/vicuna-33b/COT_shot.txt # COT
+$ ### instance typing experiments
+$ python3 -m fastchat.serve.cli-zero-shot-instance --model-path lmsys/vicuna-33b-v1.3 >> ../logs/vicuna-33b/zero_shot_instance.txt 
+$ python3 -m fastchat.serve.cli-zero-shot-instance-full --model-path lmsys/vicuna-33b-v1.3 >> ../logs/vicuna-33b/zero_shot_instance_full.txt
+```
 ### 5.3. Flan-t5s
 ### 5.4. Falcons
 ### 5.5. GPTs
