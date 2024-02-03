@@ -178,5 +178,18 @@ $ python3 -m fastchat.serve.cli-zero-shot-instance --model-path lmsys/vicuna-33b
 $ python3 -m fastchat.serve.cli-zero-shot-instance-full --model-path lmsys/vicuna-33b-v1.3 >> ../logs/vicuna-33b/zero_shot_instance_full.txt
 ```
 ### 5.3. Flan-t5s
+We introduce the steps for Flan-T5-3B and Flan-T5-11B respectively, including the main experiments and the instance typing experiment.
+#### Flan-T5-3B and 11B
+```console
+$ conda activate flan-t5
+$ cd TaxoGlimpse/LLMs/flan-t5
+$ ### main experiments
+$ python flan_chat_taxonomy.py >> ../logs/flan-t5/zero_shot.txt # zero shot
+$ python flan_chat_taxonomy_few_shot.py >> ../logs/flan-t5/few_shot.txt # few shot
+$ python flan_chat_taxonomy_COT.py >> ../logs/flan-t5/COT.txt # COT
+$ ### instance typing experiments
+$ python flan_chat_taxonomy_instance.py >> ../logs/flan-t5/zero_shot_instance.txt
+$ python flan_chat_taxonomy_instance_full.py >> ../logs/flan-t5/zero_shot_instance_full.txt
+```
 ### 5.4. Falcons
 ### 5.5. GPTs
