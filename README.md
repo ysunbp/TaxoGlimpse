@@ -61,7 +61,7 @@ The Glottolog taxonomy (Version 4.8) was obtained from the following [link](http
 We introduce how to deploy the LLMs used in our benchmark.
 
 ### 3.1. Llama-2s
-Please refer to steps 3 to 5 of the Quick Start in [README.md](https://github.com/ysunbp/TaxoGlimpse/blob/main/LLMs/llama/README.md) file to download the model weights (7B-chat, 13B-caht, and 70B-chat).
+Please refer to steps 3 to 5 of the Quick Start in [README.md](https://github.com/ysunbp/TaxoGlimpse/blob/main/LLMs/llama/README.md) file to download the model weights (7B-chat, 13B-chat, and 70B-chat).
 ### 3.2. Vicunas
 Please refer to the Model Weights Section in [README.md](https://github.com/ysunbp/TaxoGlimpse/blob/main/LLMs/vicuna/FastChat/README.md) of Vicuna to download the weights for (lmsys/vicuna-7b-v1.5, lmsys/vicuna-13b-v1.5, and lmsys/vicuna-33b-v1.3).
 ### 3.3. Flan-t5s
