@@ -176,7 +176,7 @@ tokenizer_mixtral = AutoTokenizer.from_pretrained("mistralai/Mixtral-8x7B-Instru
 You can use the same code for Flan-T5-3B to deploy the model, by modifying the model weights path.
 
 ## 4. Question generation
-We provide the generated question pools in [TaxoGlimpse/question_pools/](./question_pools), you can download them directly. Alternatively, if you want to generate the question pools from scratch, please refer to the README page for each domain under the sub-folders in [TaxoGlimpse/LLM-taxonomy](./LLM-taxonomy).
+You can generate the question pools from scratch by referring to the README page for each domain under the sub-folders in [TaxoGlimpse/LLM-taxonomy](./LLM-taxonomy).
 ## 5. Evaluation
 To conduct the experiments, please follow these steps.
 ### 5.1. LLama-2s
