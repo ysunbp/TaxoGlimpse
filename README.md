@@ -4,7 +4,7 @@ This is the repository for TaxoGlimpse, a benchmark evaluating LLMs' performance
 ![benchmark-motivation](https://github.com/ysunbp/TaxoGlimpse/blob/main/figures/motivation_updated.png)
 
 ## 1. Install requirements
-In order to deploy the LLMs and install requirements for the data processing scripts, we need to create the following environments: llama (for Llama-2s), vicuna-self (for vicunas), falcon (for falcons), flan-t5 (for flan-t5s), and LLM-probing (for GPTs and data processing). We now introduce how to create these environments with Anaconda.
+In order to deploy the LLMs and install requirements for the data processing scripts, we need to create the following environments: llama (for Llama-2s), vicuna-self (for vicunas), falcon (for falcons), flan-t5 (for flan-t5s), LLM-probing (for GPTs, Claude-3 and data processing), mixtral (for mistral and mixtral), llama3 (for Llama-3s), and llms4ol (for LLMs4OL). We now introduce how to create these environments with Anaconda.
 
 ### 1.1. llama
 ```console
@@ -41,7 +41,7 @@ $ cd requirements
 $ pip install -r LLM-probing.txt
 ```
 
-### 1.6. Mixtral
+### 1.6. mixtral
 ```console
 $ conda create -n mixtral python=3.8
 $ cd requirements
@@ -65,18 +65,27 @@ $ pip install -r llms4ol.txt
 ## 2. Data collection
 The data collection process of the taxonomies is as follows:
 
-### 2.1. Google
+### 2.1. eBay
+
+### 2.2. Google
 We obtained the Google Product Category taxonomy from [link](https://www.google.com/basepages/producttype/taxonomy.en-US.txt) and crawled the product instances to perform the additional instance typing experiment. For details, please refer to the README.md in [TaxoGlimpse/LLM-taxonomy/shopping/](https://github.com/ysunbp/TaxoGlimpse/tree/main/LLM-taxonomy/shopping).
-### 2.2. Amazon
+### 2.3. Amazon
 We crawled Amazon's Product Category and the product instances from the [browsenodes.com](https://www.browsenodes.com/). We provide the detailed scripts, please refer to the README.md in [TaxoGlimpse/LLM-taxonomy/shopping/](https://github.com/ysunbp/TaxoGlimpse/tree/main/LLM-taxonomy/shopping).
-### 2.3. ICD-10-CM
-We accessed the ICD-10-CM taxonomy through the [simple-icd-10](https://pypi.org/project/simple-icd-10/) package (version 2.0.1), for detailed usage, please refer to the [github repo](https://github.com/StefanoTrv/simple_icd_10_CM) of simple-icd-10. For details, please refer to the README.md in [TaxoGlimpse/LLM-taxonomy/medical/](https://github.com/ysunbp/TaxoGlimpse/tree/main/LLM-taxonomy/medical).
-### 2.4. ACM-CCS
+### 2.4. Schema.org
+
+### 2.5. ACM-CCS
 The ACM-CCS taxonomy was obtained from the following [link](https://dl.acm.org/pb-assets/dl_ccs/acm_ccs2012-1626988337597.xml). For details, please refer to the README.md in [TaxoGlimpse/LLM-taxonomy/academic/](https://github.com/ysunbp/TaxoGlimpse/tree/main/LLM-taxonomy/academic).
-### 2.5. NCBI
-The NCBI taxonomy was downloaded through the [official download page](https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/). We provide the 2023 Sept version as discussed in the README.md in [TaxoGlimpse/LLM-taxonomy/biology/](https://github.com/ysunbp/TaxoGlimpse/tree/main/LLM-taxonomy/biology).
-### 2.6. Glottolog
+### 2.6. GeoNames
+
+### 2.7. Glottolog
 The Glottolog taxonomy (Version 4.8) was obtained from the following [link](https://glottolog.org/meta/downloads). We provide the data used by us in the README.md in [TaxoGlimpse/LLM-taxonomy/language/](https://github.com/ysunbp/TaxoGlimpse/tree/main/LLM-taxonomy/language).
+### 2.8. ICD-10-CM
+We accessed the ICD-10-CM taxonomy through the [simple-icd-10](https://pypi.org/project/simple-icd-10/) package (version 2.0.1), for detailed usage, please refer to the [github repo](https://github.com/StefanoTrv/simple_icd_10_CM) of simple-icd-10. For details, please refer to the README.md in [TaxoGlimpse/LLM-taxonomy/medical/](https://github.com/ysunbp/TaxoGlimpse/tree/main/LLM-taxonomy/medical).
+### 2.9. OAE
+
+### 2.10. NCBI
+The NCBI taxonomy was downloaded through the [official download page](https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/). We provide the 2023 Sept version as discussed in the README.md in [TaxoGlimpse/LLM-taxonomy/biology/](https://github.com/ysunbp/TaxoGlimpse/tree/main/LLM-taxonomy/biology).
+
 
 ## 3. LLMs deployment
 We introduce how to deploy the LLMs used in our benchmark.
