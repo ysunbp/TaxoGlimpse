@@ -8,9 +8,9 @@ from tqdm import tqdm
 import time
 
 
-family_path = 'TaxoGlimpse/LLM-taxonomy/language/glottolog-glottolog-cldf-59a612c/cldf/trees.csv'
-tree_path = 'TaxoGlimpse/LLM-taxonomy/language/glottolog-glottolog-cldf-59a612c/cldf/classification.nex'
-language_path = 'TaxoGlimpse/LLM-taxonomy/language/glottolog-glottolog-cldf-59a612c/cldf/languages.csv'
+family_path = '/export/data/LLM-benchmark-project-KB/LLM-taxonomy/language/glottolog-glottolog-cldf-59a612c/cldf/trees.csv'
+tree_path = '/export/data/LLM-benchmark-project-KB/LLM-taxonomy/language/glottolog-glottolog-cldf-59a612c/cldf/classification.nex'
+language_path = '/export/data/LLM-benchmark-project-KB/LLM-taxonomy/language/glottolog-glottolog-cldf-59a612c/cldf/languages.csv'
 
 def get_family_languages(family_path):
     family_languages = []
@@ -185,8 +185,13 @@ def sample_question_pool(nodes_level_list, language_dict, cur_level, sample_size
                             root_set.append(get_name(hard_root, language_dict)) 
                     else:
                         continue
-                
-                cur_root_set = list(set(root_set)-set([cur_root_base]))
+                if question_mode == 1:
+                    if cur_level == 1:
+                        cur_root_set = list(set(root_set)-set([cur_root_base]))
+                    else:
+                        cur_root_set = list(set(root_set)-set([get_name(cur_root_base, language_dict)]))
+                else:
+                    cur_root_set = list(set(root_set)-set([cur_root_base]))
                 cur_root = random.choice(cur_root_set)
                 num_pairs += 1
                 if question_mode == 1:
@@ -265,7 +270,7 @@ num_question_samples = [100000, 100000, 100000, 100000, 100000]
 
 
 for cur_question_mode in range(3):
-    out_path = 'TaxoGlimpse/question_pools/language-glottolog/level/level_question_pool_full_' + file_name[cur_question_mode]
+    out_path = 'TaxoGlimpse/question_pools/language-glottolog/level/question_pool_full_' + file_name[cur_question_mode]
     with open(out_path, 'a', newline='') as file:
         csv_writer = csv.writer(file)
         csv_writer.writerow(['domain', 'parent', 'child', 'level', 'type'])  # 写入表头
@@ -275,14 +280,4 @@ for cur_question_mode in range(3):
         print('total number of nodes', len(nodes_at_cur_level))
         sample_question_pool(nodes_at_cur_level, language_dict, cur_level, num_question_samples[cur_node_level], out_path, question_mode = cur_question_mode)
 
-for cur_question_mode in range(3,5):
-    out_path = 'TaxoGlimpse/question_pools/language-glottolog/toroot/question_pool_full_' + file_name[cur_question_mode]
-    with open(out_path, 'a', newline='') as file:
-        csv_writer = csv.writer(file)
-        csv_writer.writerow(['domain', 'parent', 'child', 'level', 'type'])  # 写入表头
-    for cur_node_level in range(len(nodes_at_diff_levels)):
-        cur_level = cur_node_level+1
-        nodes_at_cur_level = filter_list(nodes_at_diff_levels[cur_node_level], language_dict)
-        print('total number of nodes', len(nodes_at_cur_level))
-        sample_question_pool(nodes_at_cur_level, language_dict, cur_level, num_question_samples[cur_node_level], out_path, question_mode = cur_question_mode)
 
