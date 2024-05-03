@@ -45,7 +45,7 @@ $ pip install -r LLM-probing.txt
 The data collection process of the taxonomies is as follows:
 
 ### 2.1. Google
-We obtained the Google Product Category taxonomy from [link](https://www.google.com/basepages/producttype/taxonomy.en-US.txt) and scrawled the product instances to perform the additional instance typing experiment. For details, please refer to the README.md in [TaxoGlimpse/LLM-taxonomy/shopping/](https://github.com/ysunbp/TaxoGlimpse/tree/main/LLM-taxonomy/shopping).
+We obtained the Google Product Category taxonomy from [link](https://www.google.com/basepages/producttype/taxonomy.en-US.txt) and crawled the product instances to perform the additional instance typing experiment. For details, please refer to the README.md in [TaxoGlimpse/LLM-taxonomy/shopping/](https://github.com/ysunbp/TaxoGlimpse/tree/main/LLM-taxonomy/shopping).
 ### 2.2. Amazon
 We crawled Amazon's Product Category and the product instances from the [browsenodes.com](https://www.browsenodes.com/). We provide the detailed scripts, please refer to the README.md in [TaxoGlimpse/LLM-taxonomy/shopping/](https://github.com/ysunbp/TaxoGlimpse/tree/main/LLM-taxonomy/shopping).
 ### 2.3. ICD-10-CM
