@@ -8,9 +8,9 @@ from tqdm import tqdm
 import time
 
 
-family_path = 'TaxoGlimpse/LLM-taxonomy/language/glottolog-glottolog-cldf-59a612c/cldf/trees.csv'
-tree_path = 'TaxoGlimpse/LLM-taxonomy/language/glottolog-glottolog-cldf-59a612c/cldf/classification.nex'
-language_path = 'TaxoGlimpse/LLM-taxonomy/language/glottolog-glottolog-cldf-59a612c/cldf/languages.csv'
+family_path = '/export/data/LLM-benchmark-project-KB/LLM-taxonomy/language/glottolog-glottolog-cldf-59a612c/cldf/trees.csv'
+tree_path = '/export/data/LLM-benchmark-project-KB/LLM-taxonomy/language/glottolog-glottolog-cldf-59a612c/cldf/classification.nex'
+language_path = '/export/data/LLM-benchmark-project-KB/LLM-taxonomy/language/glottolog-glottolog-cldf-59a612c/cldf/languages.csv'
 
 def get_family_languages(family_path):
     family_languages = []
@@ -187,7 +187,7 @@ def find_ancestor_path(node, target_leaf, path):
     return []
 
 def get_tree_path():
-    tree_path = 'TaxoGlimpse/LLM-taxonomy/language/glottolog-glottolog-cldf-59a612c/cldf/classification.nex'
+    tree_path = '/export/data/LLM-benchmark-project-KB/LLM-taxonomy/language/glottolog-glottolog-cldf-59a612c/cldf/classification.nex'
     tree_paths = []
     custom_tree_list = parse_tree(tree_path)
     for i, custom_tree in enumerate(custom_tree_list):
@@ -235,7 +235,8 @@ def sample_question_pool_instance(tree_paths, language_dict, out_path, max_level
                         else:
                             continue
                     
-                    cur_root_set = list(set(root_set)-set([cur_root_base]))
+                    cur_root_set = list(set(root_set)-set([get_name(cur_root_base, language_dict)]))
+                    
                     cur_root = random.choice(cur_root_set)
                     num_pairs += 1
                     if question_mode == 1:
@@ -270,6 +271,10 @@ setup_seed(seed)
 
 language_dict = get_language_dict(language_path)
 
+#deepest_depth = find_deepest_tree_depth(custom_tree_list)
+
+#nodes_at_level_one, nodes_at_level_two, nodes_at_level_three, nodes_at_level_four, nodes_at_deeper = get_nodes_by_levels(custom_tree_list, deepest_depth)
+#nodes_at_diff_levels = [nodes_at_level_one, nodes_at_level_two, nodes_at_level_three, nodes_at_level_four, nodes_at_deeper]
 file_name = ['positive.csv', 'negative_hard.csv', 'negative_easy.csv', 'positive_to_root.csv', 'negative_to_root.csv']
 #num_question_samples = [100000, 100000, 100000, 100000, 100000]
 
@@ -281,14 +286,3 @@ for cur_question_mode in range(3):
         csv_writer.writerow(['domain', 'parent', 'child', 'level', 'type'])  # 写入表头
     
     sample_question_pool_instance(tree_paths, language_dict, out_path, 5, question_mode = cur_question_mode)
-
-for cur_question_mode in range(3,5):
-    out_path = 'TaxoGlimpse/question_pools/language-glottolog/toroot/question_pool_full_' + file_name[cur_question_mode]
-    with open(out_path, 'a', newline='') as file:
-        csv_writer = csv.writer(file)
-        csv_writer.writerow(['domain', 'parent', 'child', 'level', 'type'])  # 写入表头
-    for cur_node_level in range(len(nodes_at_diff_levels)):
-        cur_level = cur_node_level+1
-        nodes_at_cur_level = filter_list(nodes_at_diff_levels[cur_node_level], language_dict)
-        print('total number of nodes', len(nodes_at_cur_level))
-        sample_question_pool(nodes_at_cur_level, language_dict, cur_level, num_question_samples[cur_node_level], out_path, question_mode = cur_question_mode)
