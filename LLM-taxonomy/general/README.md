@@ -1,4 +1,4 @@
-# How to get the academic taxonomy data
+# How to get the general taxonomy data
 If you want to use the question pools generated directly, you can skip this page and refer to the page for [question_pools](https://github.com/ysunbp/TaxoGlimpse/tree/main/question_pools) directly!
 ## Generate question pools
 Please follow these steps: <br>
