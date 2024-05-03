@@ -66,23 +66,23 @@ $ pip install -r llms4ol.txt
 The data collection process of the taxonomies is as follows:
 
 ### 2.1. eBay
-
+We crawled the eBay taxonomy from [link](https://www.ebay.com/n/all-categories). For details, please refer to the README.md in [TaxoGlimpse/LLM-taxonomy/shopping/](https://github.com/ysunbp/TaxoGlimpse/tree/main/LLM-taxonomy/shopping).
 ### 2.2. Google
 We obtained the Google Product Category taxonomy from [link](https://www.google.com/basepages/producttype/taxonomy.en-US.txt) and crawled the product instances to perform the additional instance typing experiment. For details, please refer to the README.md in [TaxoGlimpse/LLM-taxonomy/shopping/](https://github.com/ysunbp/TaxoGlimpse/tree/main/LLM-taxonomy/shopping).
 ### 2.3. Amazon
 We crawled Amazon's Product Category and the product instances from the [browsenodes.com](https://www.browsenodes.com/). We provide the detailed scripts, please refer to the README.md in [TaxoGlimpse/LLM-taxonomy/shopping/](https://github.com/ysunbp/TaxoGlimpse/tree/main/LLM-taxonomy/shopping).
 ### 2.4. Schema.org
-
+We downloaded the Schema.org data from [link](https://github.com/schemaorg/schemaorg/blob/main/data/releases/26.0/schemaorg-current-http-types.csv). For details, please refer to the README.md in [TaxoGlimpse/LLM-taxonomy/general/](https://github.com/ysunbp/TaxoGlimpse/tree/main/LLM-taxonomy/general).
 ### 2.5. ACM-CCS
 The ACM-CCS taxonomy was obtained from the following [link](https://dl.acm.org/pb-assets/dl_ccs/acm_ccs2012-1626988337597.xml). For details, please refer to the README.md in [TaxoGlimpse/LLM-taxonomy/academic/](https://github.com/ysunbp/TaxoGlimpse/tree/main/LLM-taxonomy/academic).
 ### 2.6. GeoNames
-
+We download the GeoNames data from [link](https://www.geonames.org/export/codes.html). For details, please refer to the README.md in [TaxoGlimpse/LLM-taxonomy/geography/](https://github.com/ysunbp/TaxoGlimpse/tree/main/LLM-taxonomy/geography).
 ### 2.7. Glottolog
 The Glottolog taxonomy (Version 4.8) was obtained from the following [link](https://glottolog.org/meta/downloads). We provide the data used by us in the README.md in [TaxoGlimpse/LLM-taxonomy/language/](https://github.com/ysunbp/TaxoGlimpse/tree/main/LLM-taxonomy/language).
 ### 2.8. ICD-10-CM
 We accessed the ICD-10-CM taxonomy through the [simple-icd-10](https://pypi.org/project/simple-icd-10/) package (version 2.0.1), for detailed usage, please refer to the [github repo](https://github.com/StefanoTrv/simple_icd_10_CM) of simple-icd-10. For details, please refer to the README.md in [TaxoGlimpse/LLM-taxonomy/medical/](https://github.com/ysunbp/TaxoGlimpse/tree/main/LLM-taxonomy/medical).
 ### 2.9. OAE
-
+We download the OAE taxonomy from the [link](https://bioportal.bioontology.org/ontologies/OAE). For details, please refer to the README.md in [TaxoGlimpse/LLM-taxonomy/OAE/](https://github.com/ysunbp/TaxoGlimpse/tree/main/LLM-taxonomy/OAE).
 ### 2.10. NCBI
 The NCBI taxonomy was downloaded through the [official download page](https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/). We provide the 2023 Sept version as discussed in the README.md in [TaxoGlimpse/LLM-taxonomy/biology/](https://github.com/ysunbp/TaxoGlimpse/tree/main/LLM-taxonomy/biology).
 
@@ -149,6 +149,32 @@ def generateResponse(prompt, gpt_name):
     return response.choices[0].message.content
 generateResponse("example", "gpt-4-1106-preview")
 ```
+### 3.6. Claude
+```python
+import os
+from litellm import completion
+os.environ["ANTHROPIC_API_KEY"] = "XXX"
+
+def generateResponse(prompt):
+    messages = [{"role": "user","content": prompt['user']}]
+    response = completion(model="claude-3-opus-20240229", messages=messages, api_base="https://api.openai-proxy.org/anthropic/v1/messages", temperature=0)
+    return response['choices'][0]['message']['content']
+
+generateResponse("example")
+```
+### 3.7. Llama-3s
+Please refer to [README.md](https://github.com/meta-llama/llama3) for a quick start.
+### 3.8. Mistral and Mixtral
+```python
+from transformers import AutoModelForCausalLM, AutoTokenizer
+model_mistral = AutoModelForCausalLM.from_pretrained("mistralai/Mistral-7B-Instruct-v0.2").cuda()
+tokenizer_mistral = AutoTokenizer.from_pretrained("mistralai/Mistral-7B-Instruct-v0.2")
+model_mixtral = AutoModelForCausalLM.from_pretrained("mistralai/Mixtral-8x7B-Instruct-v0.1", device_map="auto")
+tokenizer_mixtral = AutoTokenizer.from_pretrained("mistralai/Mixtral-8x7B-Instruct-v0.1")
+```
+### 3.9. LLMs4OL
+You can use the same code for Flan-T5-3B to deploy the model, by modifying the model weights path.
+
 ## 4. Question generation
 We provide the generated question pools in [TaxoGlimpse/question_pools/](./question_pools), you can download them directly. Alternatively, if you want to generate the question pools from scratch, please refer to the README page for each domain under the sub-folders in [TaxoGlimpse/LLM-taxonomy](./LLM-taxonomy).
 ## 5. Evaluation
