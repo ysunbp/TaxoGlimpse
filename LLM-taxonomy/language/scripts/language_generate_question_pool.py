@@ -8,9 +8,9 @@ from tqdm import tqdm
 import time
 
 
-family_path = '/export/data/LLM-benchmark-project-KB/LLM-taxonomy/language/glottolog-glottolog-cldf-59a612c/cldf/trees.csv'
-tree_path = '/export/data/LLM-benchmark-project-KB/LLM-taxonomy/language/glottolog-glottolog-cldf-59a612c/cldf/classification.nex'
-language_path = '/export/data/LLM-benchmark-project-KB/LLM-taxonomy/language/glottolog-glottolog-cldf-59a612c/cldf/languages.csv'
+family_path = 'TaxoGlimpse/LLM-taxonomy/language/glottolog-glottolog-cldf-59a612c/cldf/trees.csv'
+tree_path = 'TaxoGlimpse/LLM-taxonomy/language/glottolog-glottolog-cldf-59a612c/cldf/classification.nex'
+language_path = 'TaxoGlimpse/LLM-taxonomy/language/glottolog-glottolog-cldf-59a612c/cldf/languages.csv'
 
 def get_family_languages(family_path):
     family_languages = []
