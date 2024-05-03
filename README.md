@@ -86,34 +86,37 @@ tokenizer_40b = AutoTokenizer.from_pretrained(model_40b)
 Use the following Python code to deploy the LLMs:
 #### Azure API
 ```python
-import openai
-openai.api_type = "azure"
-openai.api_base = 'xxx'
-openai.api_key = 'xxx'
-openai.api_version = "2023-05-15" # azure API
-def generateResponse(prompt, gpt_name):
-    messages = [{"role": "user","content": prompt}]
-    response = openai.ChatCompletion.create(
-        engine=gpt_name,
-        temperature=0,
-        messages=messages
+from openai import AzureOpenAI
+client = AzureOpenAI(
+        azure_endpoint = 'https://hkust.azure-api.net',
+        api_key = 'xxxxx',
+        api_version = "2023-05-15"
     )
-    return response['choices'][0]['message']['content']
-generateResponse("example", "gpt-35-turbo")
-```
-#### OpenAI API
-```python
-import openai
-openai.api_base = ''
-openai.api_key = ''
 def generateResponse(prompt, gpt_name):
     messages = [{"role": "user","content": prompt}]
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
         model=gpt_name,
         temperature=0,
         messages=messages
     )
-    return response['choices'][0]['message']['content']
+    return response.choices[0].message.content
+generateResponse("example", "gpt-35-turbo")
+```
+#### OpenAI API
+```python
+from openai import OpenAI
+client = OpenAI(
+    base_url = 'xxxx',
+    api_key = 'xxxx'
+)
+def generateResponse(prompt, gpt_name):
+    messages = [{"role": "user","content": prompt}]
+    response = client.chat.completions.create(
+        model=gpt_name,
+        temperature=0,
+        messages=messages
+    )
+    return response.choices[0].message.content
 generateResponse("example", "gpt-4-1106-preview")
 ```
 ## 4. Question generation
