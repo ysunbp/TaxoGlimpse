@@ -1,10 +1,6 @@
 # How to get the shopping taxonomy data
 If you want to use the question pools generated directly, you can skip this page and refer to the page for [question_pools](https://github.com/ysunbp/TaxoGlimpse/tree/main/question_pools) directly!
 ## Step 1 Download raw data 
-### Method 1: Download the data provided by us directly
-Please download the shopping taxonomy data from the following [link](https://drive.google.com/file/d/1NHUeFNCTFdGnmGftDKszs9TMVwYhJlvs/view?usp=drive_link).
-You can download and unzip these files and put them in the shopping folder.
-### Method 2: Process the raw data or crawl the data
 #### Google
 If you want to obtain the data from scratch: <br>
 1. Please download the Google product taxonomy from [link](https://www.google.com/basepages/producttype/taxonomy.en-US.txt), put it in the ./data/ folder; <br>
