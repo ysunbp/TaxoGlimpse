@@ -124,7 +124,7 @@ file_name = ['positive.csv', 'negative_hard.csv', 'negative_easy.csv']
 
 
 for cur_question_mode in range(3):
-    out_path = './TaxoGlimpse/question_pools/geography-geonames/level/level_question_pool_full_' + file_name[cur_question_mode]
+    out_path = 'TaxoGlimpse/question_pools/geography-geonames/level/level_question_pool_full_' + file_name[cur_question_mode]
     with open(out_path, 'a', newline='') as file:
         csv_writer = csv.writer(file)
         csv_writer.writerow(['domain', 'parent', 'child', 'level', 'type'])  # 写入表头
