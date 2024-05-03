@@ -55,6 +55,13 @@ $ cd requirements
 $ pip install -r llama3.txt
 ```
 
+### 1.8. llms4ol
+```console
+$ conda create -n llms4ol python=3.9
+$ cd requirements
+$ pip install -r llms4ol.txt
+```
+
 ## 2. Data collection
 The data collection process of the taxonomies is as follows:
 
