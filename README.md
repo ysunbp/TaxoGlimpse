@@ -41,6 +41,20 @@ $ cd requirements
 $ pip install -r LLM-probing.txt
 ```
 
+### 1.6. Mixtral
+```console
+$ conda create -n mixtral python=3.8
+$ cd requirements
+$ pip install -r mixtral.txt
+```
+
+### 1.7. llama3
+```console
+$ conda create -n llama3 python=3.10
+$ cd requirements
+$ pip install -r llama3.txt
+```
+
 ## 2. Data collection
 The data collection process of the taxonomies is as follows:
 
