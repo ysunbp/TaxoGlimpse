@@ -5,4 +5,3 @@ Please follow these steps: <br>
 1. Download the raw file from [link](https://github.com/schemaorg/schemaorg/blob/main/data/releases/26.0/schemaorg-current-http-types.csv)
 2. Run the [general_generate_question_pool.py](./scripts/general_generate_question_pool.py) file to obtain the question pool for the main experiments.
 3. Run the [general_generate_question_pool_mcq.py](./scripts/general_generate_question_pool_mcq.py) file to obtain the question pool for the MCQ experiments.
-4. Run the [general_generate_question_pool_instance.py](./scripts/general_generate_question_pool_instance.py) file to obtain the question pool for the instance experiments.
