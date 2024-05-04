@@ -6,6 +6,7 @@ You can download and unzip these files and put them in the language folder.
 ## Step 2 Generate question pools
 Please follow these steps: <br>
 1. Run the [language_generate_question_pool.py](./scripts/language_generate_question_pool.py) file to obtain the question pool for the main experiments.<br>
-2. Run the [language_generate_question_pool_instance.py](./scripts/language_generate_question_pool_instance.py) file to obtain the question pool for the instance typing experiments.
+2. Run the [language_generate_question_pool_mcq.py](./scripts/language_generate_question_pool_mcq.py) file to obtain the question pool for the MCQ experiments.
+3. Run the [language_generate_question_pool_instance.py](./scripts/language_generate_question_pool_instance.py) file to obtain the question pool for the instance typing experiments.
 
 
