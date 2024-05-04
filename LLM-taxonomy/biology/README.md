@@ -6,3 +6,4 @@ Please download the raw biology taxonomy data from the following [link](https://
 Please follow these steps: <br>
 1. Run the [biology_generate_question_pool.py](./scripts/biology_generate_question_pool.py) file to obtain the question pool for the main experiments.<br>
 2. Run the [biology_generate_question_pool_instance.py](./scripts/biology_generate_question_pool_instance.py) file to obtain the question pool for the instance typing experiments.
+3. Run the [biology_generate_question_pool_mcq.py](./scripts/biology_generate_question_pool_mcq.py) file to obtain the question pool for the MCQ experiments.
