@@ -15,10 +15,13 @@ Download the raw html file from [link](https://www.ebay.com/n/all-categories).
 Please follow these steps: <br>
 1. Run the [google_generate_question_pool.py](./scripts/google_generate_question_pool.py) file to obtain the question pool for the main experiments.<br>
 2. Run the [google_instance_typing_level_generate_question_pool.py](./scripts/google_instance_typing_level_generate_question_pool.py) file to obtain the question pool for the instance typing experiments.
+3. Run the [google_generate_question_pool_mcq.py](./scripts/google_generate_question_pool_mcq.py) file to obtain the question pool for the MCQ experiments.
 ### Amazon
 Please follow these steps: <br>
 1. Run the [amazon_generate_question_pool.py](./scripts/amazon_generate_question_pool.py) file to obtain the question pool for the main experiments.<br>
 2. Run the [amazon_spider_instance_typing_level.py](./scripts/amazon_spider_instance_typing_level.py) file to obtain the question pool for the instance typing experiments.
+3. Run the [amazon_generate_question_pool_mcq.py](./scripts/amazon_generate_question_pool_mcq.py) file to obtain the question pool for the MCQ experiments.
 ### eBay
 Please follow these steps: <be>
 1. Run the [ebay_generate_question_pool.py](./scripts/ebay_generate_question_pool.py) file to obtain the question pool for the main experiments.
+2. Run the [ebay_generate_question_pool_mcq.py](./scripts/ebay_generate_question_pool_mcq.py) file to obtain the question pool for the MCQ experiments.
