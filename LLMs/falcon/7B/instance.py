@@ -270,7 +270,7 @@ if __name__ == "__main__":
         temperature=0.1
     )
     
-    question_pool_names = ['academic-acm', 'biology-NCBI', 'language-glottolog', 'medical-icd', 'shopping-amazon', 'shopping-google', 'shopping-ebay', 'general-schema', 'geography-geonames','medical-oae']
+    question_pool_names = ['biology-NCBI', 'language-glottolog', 'medical-icd', 'shopping-amazon', 'shopping-google', 'medical-oae']
     
     variant_ids = [0]
     
