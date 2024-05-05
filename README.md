@@ -181,23 +181,32 @@ You can generate the question pools from scratch by referring to the README page
 To conduct the experiments, please follow these steps.
 ### 5.1. LLama-2s
 We introduce the steps for Llama-7B, Llama-13B, and Llama-70B respectively, including the main experiments and the instance typing experiment.
-#### Llama-7B
+#### Llama-2-7B
 ```console
 $ conda activate llama
 $ cd TaxoGlimpse/LLMs/llama/
-$ torchrun --nproc_per_node 1 evaluate_llama_taxonomy.py >> ../logs/llama-2-7b-chat/log.txt
+$ torchrun --nproc_per_node 1 tf-variants.py >> ../logs/llama-2-7b-chat/tf-log.txt
+$ torchrun --nproc_per_node 1 mcq-variants.py >> ../logs/llama-2-7b-chat/mcq-log.txt
+$ ### instance typing experiment
+$ torchrun --nproc_per_node 1 instance.py >> ../logs/llama-2-7b-chat/instance-log.txt
 ```
-#### Llama-13B
+#### Llama-2-13B
 ```console
 $ conda activate llama
 $ cd TaxoGlimpse/LLMs/llama/
-$ torchrun --nproc_per_node 2 evaluate_llama_taxonomy.py >> ../logs/llama-2-13b-chat/log.txt
+$ torchrun --nproc_per_node 2 tf-variants.py >> ../logs/llama-2-13b-chat/tf-log.txt
+$ torchrun --nproc_per_node 2 mcq-variants.py >> ../logs/llama-2-13b-chat/mcq-log.txt
+$ ### instance typing experiment
+$ torchrun --nproc_per_node 2 instance.py >> ../logs/llama-2-13b-chat/instance-log.txt
 ```
-#### Llama-70B
+#### Llama-2-70B
 ```console
 $ conda activate llama
 $ cd TaxoGlimpse/LLMs/llama/
-$ torchrun --nproc_per_node 8 evaluate_llama_taxonomy.py >> ../logs/llama-2-70b-chat/log.txt
+$ torchrun --nproc_per_node 8 tf-variants.py >> ../logs/llama-2-70b-chat/tf-log.txt
+$ torchrun --nproc_per_node 8 mcq-variants.py >> ../logs/llama-2-70b-chat/mcq-log.txt
+$ ### instance typing experiment
+$ torchrun --nproc_per_node 8 instance.py >> ../logs/llama-2-70b-chat/instance.txt
 ```
 ### 5.2. Vicunas
 We introduce the steps for Vicuna-7B, Vicuna-13B, and Vicuna-33B respectively, including the main experiments and the instance typing experiment.
@@ -206,36 +215,30 @@ We introduce the steps for Vicuna-7B, Vicuna-13B, and Vicuna-33B respectively, i
 $ conda activate vicuna-self
 $ cd TaxoGlimpse/LLMs/vicuna/FastChat/
 $ ### main experiments
-$ python3 -m fastchat.serve.cli-zero-shot --model-path lmsys/vicuna-7b-v1.5 >> ../logs/vicuna-7b/zero_shot.txt # zero shot
-$ python3 -m fastchat.serve.cli-few-shot --model-path lmsys/vicuna-7b-v1.5 >> ../logs/vicuna-7b/few_shot.txt # few shot
-$ python3 -m fastchat.serve.cli-COT-shot --model-path lmsys/vicuna-7b-v1.5 >> ../logs/vicuna-7b/COT_shot.txt # COT
+$ python3 -m fastchat.serve.tf-variants --model-path lmsys/vicuna-7b-v1.5 >> ../logs/vicuna-7b/tf-log.txt
+$ python3 -m fastchat.serve.mcq-variants --model-path lmsys/vicuna-7b-v1.5 >> ../logs/vicuna-7b/mcq-log.txt
 $ ### instance typing experiments
-$ python3 -m fastchat.serve.cli-zero-shot-instance --model-path lmsys/vicuna-7b-v1.5 >> ../logs/vicuna-7b/zero_shot_instance.txt 
-$ python3 -m fastchat.serve.cli-zero-shot-instance-full --model-path lmsys/vicuna-7b-v1.5 >> ../logs/vicuna-7b/zero_shot_instance_full.txt
+$ python3 -m fastchat.serve.instance --model-path lmsys/vicuna-7b-v1.5 >> ../logs/vicuna-7b/instance-log.txt 
 ```
 #### Vicuna-13B
 ```console
 $ conda activate vicuna-self
 $ cd TaxoGlimpse/LLMs/vicuna/FastChat/
 $ ### main experiments
-$ python3 -m fastchat.serve.cli-zero-shot --model-path lmsys/vicuna-13b-v1.5 >> ../logs/vicuna-13b/zero_shot.txt # zero shot
-$ python3 -m fastchat.serve.cli-few-shot --model-path lmsys/vicuna-13b-v1.5 >> ../logs/vicuna-13b/few_shot.txt # few shot
-$ python3 -m fastchat.serve.cli-COT-shot --model-path lmsys/vicuna-13b-v1.5 >> ../logs/vicuna-13b/COT_shot.txt # COT
+$ python3 -m fastchat.serve.tf-variants --model-path lmsys/vicuna-13b-v1.5 >> ../logs/vicuna-13b/tf-log.txt
+$ python3 -m fastchat.serve.mcq-variants --model-path lmsys/vicuna-13b-v1.5 >> ../logs/vicuna-13b/mcq-log.txt
 $ ### instance typing experiments
-$ python3 -m fastchat.serve.cli-zero-shot-instance --model-path lmsys/vicuna-13b-v1.5 >> ../logs/vicuna-13b/zero_shot_instance.txt 
-$ python3 -m fastchat.serve.cli-zero-shot-instance-full --model-path lmsys/vicuna-13b-v1.5 >> ../logs/vicuna-13b/zero_shot_instance_full.txt
+$ python3 -m fastchat.serve.instance --model-path lmsys/vicuna-13b-v1.5 >> ../logs/vicuna-13b/instance-log.txt 
 ```
 #### Vicuna-33B
 ```console
 $ conda activate vicuna-self
 $ cd TaxoGlimpse/LLMs/vicuna/FastChat/
 $ ### main experiments
-$ python3 -m fastchat.serve.cli-zero-shot --model-path lmsys/vicuna-33b-v1.3 >> ../logs/vicuna-33b/zero_shot.txt # zero shot
-$ python3 -m fastchat.serve.cli-few-shot --model-path lmsys/vicuna-33b-v1.3 >> ../logs/vicuna-33b/few_shot.txt # few shot
-$ python3 -m fastchat.serve.cli-COT-shot --model-path lmsys/vicuna-33b-v1.3 >> ../logs/vicuna-33b/COT_shot.txt # COT
+$ python3 -m fastchat.serve.tf-variants --model-path lmsys/vicuna-33b-v1.3 >> ../logs/vicuna-33b/tf-log.txt
+$ python3 -m fastchat.serve.mcq-variants --model-path lmsys/vicuna-33b-v1.3 >> ../logs/vicuna-33b/mcq-log.txt
 $ ### instance typing experiments
-$ python3 -m fastchat.serve.cli-zero-shot-instance --model-path lmsys/vicuna-33b-v1.3 >> ../logs/vicuna-33b/zero_shot_instance.txt 
-$ python3 -m fastchat.serve.cli-zero-shot-instance-full --model-path lmsys/vicuna-33b-v1.3 >> ../logs/vicuna-33b/zero_shot_instance_full.txt
+$ python3 -m fastchat.serve.instance --model-path lmsys/vicuna-33b-v1.3 >> ../logs/vicuna-33b/instance-log.txt 
 ```
 ### 5.3. Flan-t5s
 We introduce the steps for Flan-T5-3B and Flan-T5-11B respectively, including the main experiments and the instance typing experiment.
@@ -244,12 +247,10 @@ We introduce the steps for Flan-T5-3B and Flan-T5-11B respectively, including th
 $ conda activate flan-t5
 $ cd TaxoGlimpse/LLMs/flan-t5
 $ ### main experiments
-$ python flan_chat_taxonomy.py >> ../logs/flan-t5/zero_shot.txt # zero shot
-$ python flan_chat_taxonomy_few_shot.py >> ../logs/flan-t5/few_shot.txt # few shot
-$ python flan_chat_taxonomy_COT.py >> ../logs/flan-t5/COT.txt # COT
+$ python tf-variants.py >> ../logs/flan-t5/tf-log.txt
+$ python mcq-variants.py >> ../logs/flan-t5/mcq-log.txt
 $ ### instance typing experiments
-$ python flan_chat_taxonomy_instance.py >> ../logs/flan-t5/zero_shot_instance.txt
-$ python flan_chat_taxonomy_instance_full.py >> ../logs/flan-t5/zero_shot_instance_full.txt
+$ python instance.py >> ../logs/flan-t5/instance-log.txt
 ```
 ### 5.4. Falcons
 We introduce the steps for Falcon-7B and Falcon-40B respectively, including the main experiments and the instance typing experiment.
@@ -258,47 +259,112 @@ We introduce the steps for Falcon-7B and Falcon-40B respectively, including the 
 $ conda activate falcon
 $ cd TaxoGlimpse/LLMs/falcon/7B
 $ ### main experiments
-$ python falcon_chat_taxonomy.py >> ../logs/falcon-7b/zero_shot.txt # zero shot
-$ python falcon_chat_taxonomy_few_shot.py >> ../logs/falcon-7b/few_shot.txt # few shot
-$ python falcon_chat_taxonomy_COT.py >> ../logs/falcon-7b/COT.txt # COT
+$ python tf-variants.py >> ../logs/falcon-7b/tf-log.txt
+$ python mcq-variants.py >> ../logs/falcon-7b/mcq-log.txt
 $ ### instance typing experiments
-$ python falcon_chat_taxonomy_instance.py >> ../logs/falcon-7b/zero_shot_instance.txt 
-$ python falcon_chat_taxonomy_instance_full.py >> ../logs/falcon-7b/zero_shot_instance_full.txt
+$ python instance.py >> ../logs/falcon-7b/instance-log.txt 
 ```
 #### Falcon-40B
 ```console
 $ conda activate falcon
 $ cd TaxoGlimpse/LLMs/falcon/40B
 $ ### main experiments
-$ python falcon_chat_taxonomy.py >> ../logs/falcon-40b/zero_shot.txt # zero shot
-$ python falcon_chat_taxonomy_few_shot.py >> ../logs/falcon-40b/few_shot.txt # few shot
-$ python falcon_chat_taxonomy_COT.py >> ../logs/falcon-40b/COT.txt # COT
+$ python tf-variants.py >> ../logs/falcon-40b/tf-log.txt
+$ python mcq-variants.py >> ../logs/falcon-40b/mcq-log.txt
 $ ### instance typing experiments
-$ python falcon_chat_taxonomy_instance.py >> ../logs/falcon-40b/zero_shot_instance.txt 
-$ python falcon_chat_taxonomy_instance_full.py >> ../logs/falcon-40b/zero_shot_instance_full.txt
-``` 
+$ python instance.py >> ../logs/falcon-40b/instance-log.txt 
+```
 ### 5.5. GPTs
 We introduce the steps for GPT-3.5 and GPT-4 respectively, including the main experiments and the instance typing experiment. <br>
 Please input your Azure APIs or OpenAI APIs at the beginning of the Python files.
 #### GPT 3.5
 ```console
 $ conda activate LLM-probing
-$ cd TaxoGlimpse/LLMs/GPTs
+$ cd TaxoGlimpse/LLMs/GPT3.5
 $ ### main experiments
-$ evaluate_taxonomy.py >> ../logs/gpt-3.5/main_exps.txt # zero shot
+$ python tf-variants.py >> ../logs/gpt-3.5/tf-log.txt
+$ python mcq-variants.py >> ../logs/gpt-3.5/mcq-log.txt 
 $ ### instance typing experiments
-$ evaluate_taxonomy_instance.py >> ../logs/gpt-3.5/instance.txt
-$ evaluate_taxonomy_instance_full.py >> ../logs/gpt-3.5/instance_full.txt
+$ python instance.py >> ../logs/gpt-3.5/instance-log.txt 
 ```
 #### GPT 4
 ```console
 $ conda activate LLM-probing
-$ cd TaxoGlimpse/LLMs/GPTs
+$ cd TaxoGlimpse/LLMs/GPT4
 $ ### main experiments
-$ evaluate_taxonomy_gpt4.py >> ../logs/gpt-4/main_exps.txt # zero shot
+$ python tf-variants.py >> ../logs/gpt-4/tf-log.txt
+$ python mcq-variants.py >> ../logs/gpt-4/mcq-log.txt 
 $ ### instance typing experiments
-$ evaluate_taxonomy_gpt4_instance.py >> ../logs/gpt-4/instance.txt
-$ evaluate_taxonomy_gpt4_instance_full.py >> ../logs/gpt-4/instance_full.txt
+$ python instance.py >> ../logs/gpt-4/instance-log.txt 
+```
+### 5.6. Claude
+We introduce the steps for Claude-3, including the main experiments and the instance typing experiment. <br>
+Please input your Anthropic APIs at the beginning of the Python files.
+#### Claude 3
+```console
+$ conda activate LLM-probing
+$ cd TaxoGlimpse/LLMs/Claude
+$ ### main experiments
+$ python tf-variants.py >> ../logs/Claude/tf-log.txt
+$ python mcq-variants.py >> ../logs/Claude/mcq-log.txt 
+$ ### instance typing experiments
+$ python instance.py >> ../logs/Claude/instance-log.txt 
+```
+### 5.7. Llama-3s
+We introduce the steps for Llama-3-8B and Llama-3-70B respectively, including the main experiments and the instance typing experiment.
+#### Llama-3-8B
+```console
+$ conda activate llama3
+$ cd TaxoGlimpse/LLMs/llama3/
+$ torchrun --nproc_per_node 1 tf-variants.py >> ../logs/llama-3-8b/tf-log.txt
+$ torchrun --nproc_per_node 1 mcq-variants.py >> ../logs/llama-3-8b/mcq-log.txt
+$ ### instance typing experiment
+$ torchrun --nproc_per_node 1 instance.py >> ../logs/llama-3-8b/instance-log.txt
+```
+#### Llama-3-70B
+```console
+$ conda activate llama3
+$ cd TaxoGlimpse/LLMs/llama3/
+$ torchrun --nproc_per_node 8 tf-variants.py >> ../logs/llama-3-70b/tf-log.txt
+$ torchrun --nproc_per_node 8 mcq-variants.py >> ../logs/llama-3-70b/mcq-log.txt
+$ ### instance typing experiment
+$ torchrun --nproc_per_node 8 instance.py >> ../logs/llama-3-70b/instance.txt
+```
+### 5.8. Mistral and Mixtral
+We introduce the steps for Mistral and Mixtral respectively, including the main experiments and the instance typing experiment.
+#### Mistral
+```console
+$ conda activate mixtral
+$ cd TaxoGlimpse/LLMs/Mistral-Mixtral/
+$ python tf-variants.py >> ../logs/mistral/tf-log.txt
+$ python mcq-variants.py >> ../logs/mistral/mcq-log.txt 
+$ ### instance typing experiments
+$ python instance.py >> ../logs/mistral/instance-log.txt 
+```
+#### Mixtral
+```console
+$ conda activate mixtral
+$ cd TaxoGlimpse/LLMs/Mistral-Mixtral/
+$ python tf-variants.py >> ../logs/mixtral/tf-log.txt
+$ python mcq-variants.py >> ../logs/mixtral/mcq-log.txt 
+$ ### instance typing experiments
+$ python instance.py >> ../logs/mixtral/instance-log.txt 
+```
+### 5.9. LLMs4OL
+We introduce the steps for LLMs4OL, including the main experiments and the instance typing experiment.
+```console
+$ conda activate llms4ol
+$ cd TaxoGlimpse/LLMs/LLMs4OL/tuning
+$ ### instruction tuning for main experiments
+$ python3 trainer.py
+$ ### instruction tuning for instance typing experiments
+$ python3 trainer-instance.py
+$ cd TaxoGlimpse/LLMs/LLMs4OL/taxoglimpse
+$ ### main experiments
+$ python tf-variants.py >> ../logs/llms4ol/tf-log.txt
+$ python mcq-variants.py >> ../logs/llms4ol/mcq-log.txt 
+$ ### instance typing experiments
+$ python instance.py >> ../logs/llms4ol/instance-log.txt 
 ```
 ## 6. Main results
 ![results](https://github.com/ysunbp/TaxoGlimpse/blob/main/figures/result.png)
