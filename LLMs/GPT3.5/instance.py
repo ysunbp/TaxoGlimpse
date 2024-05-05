@@ -86,6 +86,7 @@ def get_sampled_pairs(sub_question_type='level', level_question_types=['positive
                 cur_csv_file = cur_question_pool_path + 'question_pool_full_' + level_question_type + '.csv'
                 cur_question_pool_dict = load_csv_file(cur_csv_file, level_question_type)
                 sampled_question_pairs.update(sample_question_pairs(cur_question_pool_dict))
+            return sampled_question_pairs
         else:
             if question_pool_name == 'biology-NCBI':
                 sampled_question_pairs = {}
