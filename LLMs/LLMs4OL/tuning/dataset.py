@@ -7,7 +7,9 @@ class BaseDataset:
     def build_samples(self, dataset):
         source_text, target_text = [], []
         for data in dataset:
-            if data['negative']:
+            if data['negative']: # skipped negative samples
+                continue
+            if not data['task-b']: # me added
                 continue
             if data.get('task-b', False):
                 for template in self.templates_list['task-b-prompts']:
@@ -19,10 +21,10 @@ class BaseDataset:
                     filled_template = self.fill_task_c_template(data, template)
                     source_text.append(filled_template['text'])
                     target_text.append(filled_template['label'])
-            for template in self.templates_list['completion-prompts']:
+            '''for template in self.templates_list['completion-prompts']:
                 filled_template = self.fill_completion_template(data, template)
                 source_text.append(filled_template['text'])
-                target_text.append(filled_template['label'])
+                target_text.append(filled_template['label'])'''
         return source_text, target_text
 
     def fill_completion_template(self, data, template) -> dict:
