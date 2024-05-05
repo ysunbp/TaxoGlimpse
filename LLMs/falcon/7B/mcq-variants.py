@@ -238,7 +238,7 @@ if __name__ == "__main__":
     for question_pool_name in question_pool_names:
         for variant_id in variant_ids:
             cur_question_pairs = []
-            sampled_question_pairs = get_sampled_pairs(sub_question_type='mcq', level_question_types=['easy'], toroot_question_types=None, question_pool_name = question_pool_name)
+            sampled_question_pairs = get_sampled_pairs(sub_question_type='mcq', level_question_types=['hard'], toroot_question_types=None, question_pool_name = question_pool_name)
             
             cur_question_pairs.append(sampled_question_pairs)
             for cur_question_pair in cur_question_pairs:
