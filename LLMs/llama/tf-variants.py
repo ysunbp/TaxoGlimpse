@@ -599,7 +599,7 @@ if __name__ == "__main__":
 
     
         
-    ### current file path: TaxoGlimpse/LLMs/llama/evaluate_llama_taxonomy.py
-    ### command: torchrun --nproc_per_node 1 evaluate_llama_taxonomy_variants_template.py 
-    ### command: torchrun --nproc_per_node 2 evaluate_llama_taxonomy_variants_template.py 
-    ### command: torchrun --nproc_per_node 8 evaluate_llama_taxonomy_variants_template.py 
+    ### current file path: TaxoGlimpse/LLMs/llama/tf-variants.py
+    ### command: torchrun --nproc_per_node 1 tf-variants.py
+    ### command: torchrun --nproc_per_node 2 tf-variants.py
+    ### command: torchrun --nproc_per_node 8 tf-variants.py
