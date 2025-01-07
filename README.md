@@ -371,19 +371,19 @@ $ python instance.py >> ../logs/llms4ol/instance-log.txt
 ## 7. Citations
 ```
 @article{sun2024large,
-author = {Sun, Yushi and Xin, Hao and Sun, Kai and Xu, Yifan Ethan and Yang, Xiao and Dong, Xin Luna and Tang, Nan and Chen, Lei},
-title = {Are Large Language Models a Good Replacement of Taxonomies?},
-year = {2024},
-issue_date = {July 2024},
-publisher = {VLDB Endowment},
-volume = {17},
-number = {11},
-issn = {2150-8097},
-url = {https://doi.org/10.14778/3681954.3681973},
-doi = {10.14778/3681954.3681973},
-journal = {Proc. VLDB Endow.},
-month = {aug},
-pages = {2919–2932},
-numpages = {14}
+        author = {Sun, Yushi and Xin, Hao and Sun, Kai and Xu, Yifan Ethan and Yang, Xiao and Dong, Xin Luna and Tang, Nan and Chen, Lei},
+        title = {Are Large Language Models a Good Replacement of Taxonomies?},
+        year = {2024},
+        issue_date = {July 2024},
+        publisher = {VLDB Endowment},
+        volume = {17},
+        number = {11},
+        issn = {2150-8097},
+        url = {https://doi.org/10.14778/3681954.3681973},
+        doi = {10.14778/3681954.3681973},
+        journal = {Proc. VLDB Endow.},
+        month = {aug},
+        pages = {2919–2932},
+        numpages = {14}
 }
 ```
